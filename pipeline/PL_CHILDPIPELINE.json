@@ -23,7 +23,10 @@
 					},
 					"dataset": {
 						"referenceName": "DS_LOOKUP_MAX_VALUE",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"schemaname": "@P"
+						}
 					},
 					"firstRowOnly": true
 				}
