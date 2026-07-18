@@ -1,0 +1,24 @@
+{
+	"name": "LS_LOOKUP_MAX_VALUE",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "localhost\\SQLEXPRESS",
+			"database": "RetailDW_Dev",
+			"encrypt": "True",
+			"trustServerCertificate": true,
+			"authenticationType": "SQL",
+			"userName": "dheeraj",
+			"pooling": "False",
+			"multipleActiveResultSets": "False",
+			"commandTimeout": "0",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiNzYwZjM1ZC0xZjZlLTQxYTktYWM0OC1lMWMwNDk5MGJmNDQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
