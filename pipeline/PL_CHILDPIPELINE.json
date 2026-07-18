@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Lookup1",
+				"name": "LOOKUP_MAX_VALUE",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -13,12 +13,32 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"sqlReaderQuery": "(@item().TableSchema, @item().TableName, @item().WatermarkColumn, @item().LastLoadValue;",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "DS_LOOKUP_MAX_VALUE",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": true
+				}
 			},
 			{
-				"name": "If Condition1",
+				"name": "IF_NEW_RECORD_EXISTS",
 				"type": "IfCondition",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "LOOKUP_MAX_VALUE",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"userProperties": [],
 				"typeProperties": {
 					"ifTrueActivities": [
