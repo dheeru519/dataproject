@@ -29,7 +29,7 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "ForEachSQLTable",
 				"type": "ForEach",
 				"dependsOn": [
 					{
@@ -41,9 +41,13 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('LOOKUP_SQLTABLE_WATERMARK_DW').output.value",
+						"type": "Expression"
+					},
 					"activities": [
 						{
-							"name": "Execute Pipeline1",
+							"name": "EXEC_SQL_INCREMENTAL_PIPELINE",
 							"type": "ExecutePipeline",
 							"dependsOn": [],
 							"policy": {
