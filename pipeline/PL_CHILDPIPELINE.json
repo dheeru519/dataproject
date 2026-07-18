@@ -13,7 +13,12 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "watermarkcolumn",
+						"value": "WatermarkColumn"
+					}
+				],
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
