@@ -1,0 +1,15 @@
+{
+	"name": "adf-datalabs1",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "2d79754c-600d-4e50-9e9b-deeef2fb7533",
+		"tenantId": "a32aa734-9552-4efb-831a-2da681c19941"
+	}
+}
