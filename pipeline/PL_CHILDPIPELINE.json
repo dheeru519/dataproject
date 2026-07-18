@@ -1,0 +1,9 @@
+{
+	"name": "PL_CHILDPIPELINE",
+	"properties": {
+		"folder": {
+			"name": "SQLData-OnPrem to Azure ADLS"
+		},
+		"annotations": []
+	}
+}
