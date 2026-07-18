@@ -53,7 +53,24 @@
 							"policy": {
 								"secureInput": false
 							},
-							"userProperties": [],
+							"userProperties": [
+								{
+									"name": "TableSchema",
+									"value": "@item().TableSchema"
+								},
+								{
+									"name": "TableName",
+									"value": "@item().TableName"
+								},
+								{
+									"name": "WatermarkColumn",
+									"value": "@item().WatermarkColumn"
+								},
+								{
+									"name": "LastLoadValue",
+									"value": "@item().LastLoadValue"
+								}
+							],
 							"typeProperties": {
 								"pipeline": {
 									"referenceName": "PL_CHILDPIPELINE",

@@ -25,7 +25,10 @@
 						"referenceName": "DS_LOOKUP_MAX_VALUE",
 						"type": "DatasetReference",
 						"parameters": {
-							"schemaname": "@P"
+							"schemaname": {
+								"value": "@pipeline().parameters.Tableschema",
+								"type": "Expression"
+							}
 						}
 					},
 					"firstRowOnly": true
