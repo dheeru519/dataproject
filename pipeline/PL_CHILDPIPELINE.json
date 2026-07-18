@@ -26,7 +26,11 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"schemaname": {
-								"value": "@pipeline().parameters.Tableschema",
+								"value": "@pipeline().parameters.schemaname",
+								"type": "Expression"
+							},
+							"tablename": {
+								"value": "@pipeline().parameters.tablename",
 								"type": "Expression"
 							}
 						}
@@ -61,13 +65,37 @@
 							},
 							"userProperties": [],
 							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
 								"enableStaging": false
-							}
+							},
+							"inputs": [
+								{
+									"referenceName": "DS_LOOKUP_MAX_VALUE",
+									"type": "DatasetReference",
+									"parameters": {
+										"tablename": "TableName"
+									}
+								}
+							]
 						}
 					]
 				}
 			}
 		],
+		"parameters": {
+			"schemaname": {
+				"type": "String",
+				"defaultValue": "TableSchema"
+			},
+			"tablename": {
+				"type": "String",
+				"defaultValue": "TableName"
+			}
+		},
 		"folder": {
 			"name": "SQLData-OnPrem to Azure ADLS"
 		},
