@@ -99,6 +99,10 @@
 			"tablename": {
 				"type": "String",
 				"defaultValue": "TableName"
+			},
+			"watermarkcolumn": {
+				"type": "string",
+				"defaultValue": "WatermarkColumn"
 			}
 		},
 		"folder": {
