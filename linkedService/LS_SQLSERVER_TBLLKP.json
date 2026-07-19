@@ -1,0 +1,21 @@
+{
+	"name": "LS_SQLSERVER_TBLLKP",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"server": "localhost\\SQLEXPRESS",
+			"database": "RetailDW_Dev",
+			"encrypt": "optional",
+			"trustServerCertificate": false,
+			"authenticationType": "SQL",
+			"userName": "dheeraj",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJjMTJmMTJmYS1kZjIzLTQwM2UtODc0OC1lNDU4ZjRkZjg4ODQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntime1",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
