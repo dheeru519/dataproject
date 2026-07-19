@@ -85,6 +85,7 @@
 									"referenceName": "DS_LOOKUP_MAX_VALUE",
 									"type": "DatasetReference",
 									"parameters": {
+										"schemaname": "TableSchema",
 										"tablename": "TableName"
 									}
 								}
@@ -96,16 +97,16 @@
 		],
 		"parameters": {
 			"schemaname": {
-				"type": "String",
-				"defaultValue": "TableSchema"
+				"type": "String"
 			},
 			"tablename": {
-				"type": "String",
-				"defaultValue": "TableName"
+				"type": "String"
 			},
 			"watermarkcolumn": {
-				"type": "string",
-				"defaultValue": "WatermarkColumn"
+				"type": "string"
+			},
+			"lastloadvalue": {
+				"type": "string"
 			}
 		},
 		"folder": {
