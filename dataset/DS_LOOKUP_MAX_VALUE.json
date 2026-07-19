@@ -6,10 +6,16 @@
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
-			"schemaname": {
+			"TableSchema": {
 				"type": "string"
 			},
-			"tablename": {
+			"TableName": {
+				"type": "string"
+			},
+			"WaterMarkColumn": {
+				"type": "string"
+			},
+			"LastLoadValue": {
 				"type": "string"
 			}
 		},
