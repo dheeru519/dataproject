@@ -47,6 +47,7 @@
 						"value": "@activity('LKUP_SQLTABLE_WATERMARK_DW').output.value",
 						"type": "Expression"
 					},
+					"isSequential": false,
 					"activities": [
 						{
 							"name": "EXEC_SQL_INCREMENTALLOAD",
@@ -61,7 +62,16 @@
 									"referenceName": "PL_CHILDPIPELINE_INCREMENT_LOAD",
 									"type": "PipelineReference"
 								},
-								"waitOnCompletion": true
+								"waitOnCompletion": true,
+								"parameters": {
+									"TableSchema": {
+										"value": "@item().TableSchema",
+										"type": "Expression"
+									},
+									"TableName": "@item().TableName",
+									"WatermarkColumn": "@item().WatermarkColumn",
+									"LastLoadValue": "@item().LastLoadValue"
+								}
 							}
 						}
 					]
