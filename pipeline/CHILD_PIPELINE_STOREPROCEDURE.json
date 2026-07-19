@@ -60,6 +60,9 @@
 				"type": "string"
 			}
 		},
+		"folder": {
+			"name": "Project-Migration SQL _OnPrem-ADLS"
+		},
 		"annotations": []
 	}
 }
