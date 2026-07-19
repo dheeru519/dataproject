@@ -53,30 +53,28 @@
 							"policy": {
 								"secureInput": false
 							},
-							"userProperties": [
-								{
-									"name": "TableSchema",
-									"value": "@item().TableSchema"
-								},
-								{
-									"name": "TableName",
-									"value": "@item().TableName"
-								},
-								{
-									"name": "WatermarkColumn",
-									"value": "@item().WatermarkColumn"
-								},
-								{
-									"name": "LastLoadValue",
-									"value": "@item().LastLoadValue"
-								}
-							],
+							"userProperties": [],
 							"typeProperties": {
 								"pipeline": {
-									"referenceName": "PL_CHILDPIPELINE_INCREMENTALLOAD",
+									"referenceName": "PL_CHILDPIPELINE_INCREMENTAL",
 									"type": "PipelineReference"
 								},
-								"waitOnCompletion": true
+								"waitOnCompletion": true,
+								"parameters": {
+									"schemaname": {
+										"value": "@item().TableSchema",
+										"type": "Expression"
+									},
+									"tablename": {
+										"value": "@item().TableName",
+										"type": "Expression"
+									},
+									"watermarkcolumn": {
+										"value": "@item().WatermarkColumn",
+										"type": "Expression"
+									},
+									"lastloadvalue": "@item().LastLoadValue"
+								}
 							}
 						}
 					]
