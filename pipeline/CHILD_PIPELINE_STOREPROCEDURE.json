@@ -58,6 +58,9 @@
 			},
 			"WaterMarkColumn": {
 				"type": "string"
+			},
+			"LastLoadValue": {
+				"type": "string"
 			}
 		},
 		"folder": {
