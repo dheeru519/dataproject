@@ -1,5 +1,5 @@
 {
-	"name": "PL_CHILDPIPELINE",
+	"name": "PL_CHILDPIPELINE_INCREMENTAL",
 	"properties": {
 		"activities": [
 			{
@@ -16,7 +16,7 @@
 				"userProperties": [
 					{
 						"name": "watermarkcolumn",
-						"value": "WatermarkColumn"
+						"value": ""
 					}
 				],
 				"typeProperties": {
@@ -33,12 +33,20 @@
 						"referenceName": "DS_LOOKUP_MAX_VALUE",
 						"type": "DatasetReference",
 						"parameters": {
-							"schemaname": {
+							"TableSchema": {
 								"value": "@pipeline().parameters.schemaname",
 								"type": "Expression"
 							},
-							"tablename": {
+							"TableName": {
 								"value": "@pipeline().parameters.tablename",
+								"type": "Expression"
+							},
+							"WaterMarkColumn": {
+								"value": "@pipeline().parameters.watermarkcolumn",
+								"type": "Expression"
+							},
+							"LastLoadValue": {
+								"value": "@pipeline().parameters.lastloadvalue",
 								"type": "Expression"
 							}
 						}
@@ -59,9 +67,13 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"expression": {
+						"value": "@or(equals(pipeline().parameters.LastLoadValue, null), greater(int(activity('LOOKUP_MAX_VALUE').output.firstRow.MaxValue), int(pipeline().parameters.LastLoadValue)))",
+						"type": "Expression"
+					},
 					"ifTrueActivities": [
 						{
-							"name": "Copy data1",
+							"name": "COPYSQL_FULL_INCTLOAD_TABLES",
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
@@ -75,6 +87,10 @@
 							"typeProperties": {
 								"source": {
 									"type": "SqlServerSource",
+									"sqlReaderQuery": {
+										"value": "@concat(\n    'SELECT * FROM ',\n    pipeline().parameters.TableSchema, '.', pipeline().parameters.TableName,\n    if(\n        equals(pipeline().parameters.LastLoadValue, null),\n        '', \n        concat(\n            ' WHERE ', pipeline().parameters.WatermarkColumn,\n            ' > ''', pipeline().parameters.LastLoadValue, ''''\n        )\n    )\n)\n",
+										"type": "Expression"
+									},
 									"queryTimeout": "02:00:00",
 									"partitionOption": "None"
 								},
@@ -85,8 +101,14 @@
 									"referenceName": "DS_LOOKUP_MAX_VALUE",
 									"type": "DatasetReference",
 									"parameters": {
-										"schemaname": "TableSchema",
-										"tablename": "TableName"
+										"TableSchema": {
+											"value": "@pipeline().parameters.schemaname\n",
+											"type": "Expression"
+										},
+										"TableName": {
+											"value": "@pipeline().parameters.tablename",
+											"type": "Expression"
+										}
 									}
 								}
 							]
